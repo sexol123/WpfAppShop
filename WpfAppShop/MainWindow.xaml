@@ -1,0 +1,66 @@
+﻿<Window x:Class="WpfAppShop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAppShop"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <Style TargetType="TabControl">
+            <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="103*"/>
+            <ColumnDefinition Width="414*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0"
+            >
+            <Button Content="Новый заказ" Click="ButtonB_Click"></Button>
+            <Button Content="Удалить"></Button>
+            <Button Content="Редактировать"></Button>
+            <Button Content=""></Button>
+            <Button Content=""></Button>
+            <Button Content="Connection test" Click="ButtonTest_Click"></Button>
+
+        </StackPanel>
+        <TabControl 
+            Grid.Column="1"
+            HorizontalAlignment="Stretch"
+            Grid.ColumnSpan="2">
+            <TabItem Header="Orders" >
+                <DataGrid
+                         ItemsSource="{Binding TOrder,
+                    UpdateSourceTrigger=PropertyChanged}"
+                    
+                          ></DataGrid>
+            </TabItem>
+            <TabItem Header="OrdersDetail">
+                <DataGrid ItemsSource="{Binding TOD}"></DataGrid>
+            </TabItem>
+            <TabItem Header="Products">
+                <DataGrid ItemsSource="{Binding  TProd,UpdateSourceTrigger=PropertyChanged}" 
+                         
+                          ></DataGrid>
+            </TabItem>
+            <TabItem Header="Costumers">
+                <DataGrid ItemsSource="{Binding TCust}"></DataGrid>
+            </TabItem>
+            <TabItem Header="Suppliers">
+                <DataGrid ItemsSource="{Binding TSup}"></DataGrid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+
+
+
+</Window>
